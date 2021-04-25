@@ -6,7 +6,7 @@ import './index.css';
 import App from './App';
 
 const client = new ApolloClient({
-  uri: 'https://api.spacex.land/graphql/',
+  uri: 'https://api.spacex.land',
   cache: new InMemoryCache()
 });
 

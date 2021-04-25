@@ -1,8 +1,12 @@
 import { useQuery, gql } from '@apollo/client';
 
+interface PageQueryOptions {
+    limit: number
+}
+
 const GET_LUNCHES = gql`
-  query GetLunchesPast($options: PageQueryOptions!) {
-    launchesPast(options: $options) {
+  query GetLunchesPast($limit: Int!) {
+    launchesPast(limit: $limit) {
         mission_name
         launch_date_local
         launch_site {
@@ -97,3 +101,5 @@ const useGetLunches = (): undefined => {
     });
     return data.launchesPast.data;
 }
+
+export default useGetLunches;
