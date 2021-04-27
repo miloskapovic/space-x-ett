@@ -9,6 +9,7 @@
     "@chakra-ui/theme": "^1.8.4",
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.3.0",
+    "@react-google-maps/api": "^2.1.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -20,6 +21,7 @@
     "@types/react-router-dom": "^5.1.7",
     "framer-motion": "^4.1.9",
     "graphql": "^15.5.0",
+    "query-string": "^7.0.0",
     "react": "^17.0.2",
     "react-apollo": "^3.1.5",
     "react-dom": "^17.0.2",
@@ -34,7 +36,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "generate": "graphql-codegen",
-    "gen-types": "apollo-codegen introspect-schema https://api.spacex.land --output schema.json && apollo-codegen generate src/**/*.ts --schema schema.json --target typescript --output src/operation-result-types.ts",
     "codegen": "graphql-codegen --config codegen.yml"
   },
   "eslintConfig": {
@@ -57,9 +58,10 @@
   },
   "devDependencies": {
     "@graphql-codegen/cli": "1.21.4",
+    "@graphql-codegen/introspection": "1.18.2",
     "@graphql-codegen/typescript": "1.22.0",
-    "@graphql-codegen/typescript-react-apollo": "2.2.4",
     "@graphql-codegen/typescript-operations": "1.17.16",
-    "@graphql-codegen/introspection": "1.18.2"
+    "@graphql-codegen/typescript-react-apollo": "2.2.4",
+    "@types/googlemaps": "^3.43.3"
   }
 }

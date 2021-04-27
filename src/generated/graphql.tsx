@@ -1366,6 +1366,38 @@ export type GetLunchesPastQuery = (
   )>>> }
 );
 
+export type GetRocketsQueryVariables = Exact<{
+  limit: Scalars['Int'];
+}>;
+
+
+export type GetRocketsQuery = (
+  { __typename?: 'Query' }
+  & { rockets?: Maybe<Array<Maybe<(
+    { __typename?: 'Rocket' }
+    & Pick<Rocket, 'company' | 'cost_per_launch' | 'country' | 'description' | 'first_flight' | 'success_rate_pct' | 'wikipedia' | 'name'>
+    & { mass?: Maybe<(
+      { __typename?: 'Mass' }
+      & Pick<Mass, 'kg'>
+    )> }
+  )>>> }
+);
+
+export type GetShipsQueryVariables = Exact<{
+  limit: Scalars['Int'];
+  order: Scalars['String'];
+  sort: Scalars['String'];
+}>;
+
+
+export type GetShipsQuery = (
+  { __typename?: 'Query' }
+  & { ships?: Maybe<Array<Maybe<(
+    { __typename?: 'Ship' }
+    & Pick<Ship, 'weight_kg' | 'year_built' | 'url' | 'type' | 'status' | 'speed_kn' | 'roles' | 'name' | 'model' | 'image' | 'id' | 'home_port' | 'course_deg' | 'class' | 'attempted_landings' | 'active' | 'abs'>
+  )>>> }
+);
+
 
 export const GetLunchesPastDocument = gql`
     query GetLunchesPast($limit: Int!) {
@@ -1434,3 +1466,101 @@ export function useGetLunchesPastLazyQuery(baseOptions?: Apollo.LazyQueryHookOpt
 export type GetLunchesPastQueryHookResult = ReturnType<typeof useGetLunchesPastQuery>;
 export type GetLunchesPastLazyQueryHookResult = ReturnType<typeof useGetLunchesPastLazyQuery>;
 export type GetLunchesPastQueryResult = Apollo.QueryResult<GetLunchesPastQuery, GetLunchesPastQueryVariables>;
+export const GetRocketsDocument = gql`
+    query GetRockets($limit: Int!) {
+  rockets(limit: $limit) {
+    company
+    cost_per_launch
+    country
+    description
+    first_flight
+    mass {
+      kg
+    }
+    success_rate_pct
+    wikipedia
+    name
+  }
+}
+    `;
+
+/**
+ * __useGetRocketsQuery__
+ *
+ * To run a query within a React component, call `useGetRocketsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetRocketsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetRocketsQuery({
+ *   variables: {
+ *      limit: // value for 'limit'
+ *   },
+ * });
+ */
+export function useGetRocketsQuery(baseOptions: Apollo.QueryHookOptions<GetRocketsQuery, GetRocketsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetRocketsQuery, GetRocketsQueryVariables>(GetRocketsDocument, options);
+      }
+export function useGetRocketsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetRocketsQuery, GetRocketsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetRocketsQuery, GetRocketsQueryVariables>(GetRocketsDocument, options);
+        }
+export type GetRocketsQueryHookResult = ReturnType<typeof useGetRocketsQuery>;
+export type GetRocketsLazyQueryHookResult = ReturnType<typeof useGetRocketsLazyQuery>;
+export type GetRocketsQueryResult = Apollo.QueryResult<GetRocketsQuery, GetRocketsQueryVariables>;
+export const GetShipsDocument = gql`
+    query GetShips($limit: Int!, $order: String!, $sort: String!) {
+  ships(limit: $limit, order: $order, sort: $sort) {
+    weight_kg
+    year_built
+    url
+    type
+    status
+    speed_kn
+    roles
+    name
+    model
+    image
+    id
+    home_port
+    course_deg
+    class
+    attempted_landings
+    active
+    abs
+  }
+}
+    `;
+
+/**
+ * __useGetShipsQuery__
+ *
+ * To run a query within a React component, call `useGetShipsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetShipsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetShipsQuery({
+ *   variables: {
+ *      limit: // value for 'limit'
+ *      order: // value for 'order'
+ *      sort: // value for 'sort'
+ *   },
+ * });
+ */
+export function useGetShipsQuery(baseOptions: Apollo.QueryHookOptions<GetShipsQuery, GetShipsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetShipsQuery, GetShipsQueryVariables>(GetShipsDocument, options);
+      }
+export function useGetShipsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetShipsQuery, GetShipsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetShipsQuery, GetShipsQueryVariables>(GetShipsDocument, options);
+        }
+export type GetShipsQueryHookResult = ReturnType<typeof useGetShipsQuery>;
+export type GetShipsLazyQueryHookResult = ReturnType<typeof useGetShipsLazyQuery>;
+export type GetShipsQueryResult = Apollo.QueryResult<GetShipsQuery, GetShipsQueryVariables>;
